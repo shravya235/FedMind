@@ -13,27 +13,37 @@ interface FormData {
   [key: string]: string | number;
 }
 
+interface Feature {
+  name: string;
+  label: string;
+  type: string;
+  options?: string[];
+  required: boolean;
+}
+
 export default function FeatureForm({ onResults, onComparison, loading, setLoading }: FeatureFormProps) {
   const [formData, setFormData] = useState<FormData>({});
   const [modelName, setModelName] = useState('MLP');
   const [privacyBudget, setPrivacyBudget] = useState(5.0);
 
-  const features = [
-    { name: 'age', label: 'Age', type: 'number', min: 18, max: 100 },
-    { name: 'gender', label: 'Gender', type: 'select', options: ['0: Male', '1: Female', '2: Other'] },
-    { name: 'education', label: 'Education Level', type: 'select', options: ['0: High School', '1: College', '2: Bachelor', '3: Master', '4: PhD'] },
-    { name: 'employment', label: 'Employment Status', type: 'select', options: ['0: Unemployed', '1: Part-time', '2: Full-time', '3: Self-employed'] },
-    { name: 'income', label: 'Annual Income ($)', type: 'number', min: 0, max: 1000000 },
-    { name: 'marital_status', label: 'Marital Status', type: 'select', options: ['0: Single', '1: Married', '2: Divorced', '3: Widowed'] },
-    { name: 'children', label: 'Number of Children', type: 'number', min: 0, max: 10 },
-    { name: 'alcohol_consumption', label: 'Alcohol Consumption (drinks/week)', type: 'number', min: 0, max: 100 },
-    { name: 'drug_use', label: 'Drug Use (0: No, 1: Yes)', type: 'select', options: ['0: No', '1: Yes'] },
-    { name: 'sleep_hours', label: 'Sleep Hours per Night', type: 'number', min: 0, max: 24 },
-    { name: 'exercise_hours', label: 'Exercise Hours per Week', type: 'number', min: 0, max: 40 },
-    { name: 'stress_level', label: 'Stress Level (1-10)', type: 'number', min: 1, max: 10 },
-    { name: 'social_support', label: 'Social Support (1-10)', type: 'number', min: 1, max: 10 },
-    { name: 'therapy_history', label: 'Previous Therapy', type: 'select', options: ['0: No', '1: Yes'] },
-    { name: 'symptom_severity', label: 'Symptom Severity (1-10)', type: 'number', min: 1, max: 10 },
+  const features: Feature[] = [
+    { name: 'timestamp', label: 'Survey Date', type: 'date', required: true },
+    { name: 'gender', label: 'Gender', type: 'select', options: ['Male', 'Female', 'Other'], required: true },
+    { name: 'country', label: 'Country', type: 'text', required: true },
+    { name: 'occupation', label: 'Occupation', type: 'select', options: ['Corporate', 'Student', 'Freelancer', 'Healthcare', 'Education', 'Other'], required: true },
+    { name: 'self_employed', label: 'Self Employed', type: 'select', options: ['Yes', 'No'], required: true },
+    { name: 'family_history', label: 'Family History of Mental Illness', type: 'select', options: ['Yes', 'No'], required: true },
+    { name: 'treatment', label: 'Previous Treatment', type: 'select', options: ['Yes', 'No'], required: true },
+    { name: 'days_indoors', label: 'Days Staying Indoors', type: 'select', options: ['1-7 days', '8-14 days', '15-30 days', 'More than 30 days'], required: true },
+    { name: 'growing_stress', label: 'Growing Stress', type: 'select', options: ['Yes', 'No'], required: true },
+    { name: 'changes_habits', label: 'Changes in Daily Habits', type: 'select', options: ['Yes', 'No'], required: true },
+    { name: 'mental_health_history', label: 'Personal Mental Health History', type: 'select', options: ['Yes', 'No'], required: true },
+    { name: 'mood_swings', label: 'Mood Swings', type: 'select', options: ['Low', 'Medium', 'High'], required: true },
+    { name: 'coping_struggles', label: 'Coping Struggles', type: 'select', options: ['Yes', 'No'], required: true },
+    { name: 'work_interest', label: 'Work Interest Affected', type: 'select', options: ['Yes', 'No'], required: true },
+    { name: 'social_weakness', label: 'Social Weakness', type: 'select', options: ['Yes', 'No'], required: true },
+    { name: 'mental_health_interview', label: 'Comfort Discussing Mental Health in Interviews', type: 'select', options: ['Yes', 'No', 'Maybe'], required: true },
+    { name: 'care_options', label: 'Awareness of Care Options', type: 'select', options: ['Yes', 'No', 'Not sure'], required: true },
   ];
 
   const handleInputChange = (name: string, value: string | number) => {
@@ -89,14 +99,15 @@ export default function FeatureForm({ onResults, onComparison, loading, setLoadi
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         {features.map(feature => (
           <div key={feature.name} className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor={feature.name} className="block text-sm font-medium text-gray-700 mb-2">
               {feature.label}
             </label>
             {feature.type === 'select' ? (
               <select
+                id={feature.name}
                 value={formData[feature.name] || ''}
                 onChange={(e) => handleInputChange(feature.name, e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-black"
                 required
               >
                 <option value="">Select {feature.label}</option>
@@ -106,12 +117,13 @@ export default function FeatureForm({ onResults, onComparison, loading, setLoadi
               </select>
             ) : (
               <input
+                id={feature.name}
                 type={feature.type}
                 min={feature.min}
                 max={feature.max}
                 value={formData[feature.name] || ''}
                 onChange={(e) => handleInputChange(feature.name, parseFloat(e.target.value))}
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-black"
                 required
               />
             )}
@@ -121,8 +133,9 @@ export default function FeatureForm({ onResults, onComparison, loading, setLoadi
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Model Architecture</label>
+          <label htmlFor="model-architecture" className="block text-sm font-medium text-gray-700 mb-2">Model Architecture</label>
           <select
+            id="model-architecture"
             value={modelName}
             onChange={(e) => setModelName(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
@@ -134,8 +147,9 @@ export default function FeatureForm({ onResults, onComparison, loading, setLoadi
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Privacy Budget (ε)</label>
+          <label htmlFor="privacy-budget" className="block text-sm font-medium text-gray-700 mb-2">Privacy Budget (ε)</label>
           <select
+            id="privacy-budget"
             value={privacyBudget}
             onChange={(e) => setPrivacyBudget(parseFloat(e.target.value))}
             className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
