@@ -119,6 +119,8 @@ export default function FeatureForm({ onResults, onComparison, loading, setLoadi
               <input
                 id={feature.name}
                 type={feature.type}
+                // min={feature.min}
+                // max={feature.max}
                 min={feature.min}
                 max={feature.max}
                 value={formData[feature.name] || ''}
@@ -163,7 +165,7 @@ export default function FeatureForm({ onResults, onComparison, loading, setLoadi
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 px-4 rounded-md hover:from-blue-600 hover:to-purple-600 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loading ? 'Processing...' : 'Get Prediction'}
       </button>

@@ -7,40 +7,40 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-blue-600">
+            <Link href="/" className="text-2xl font-bold text-white hover:text-purple-300">
               FedMind
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+            <Link href="/" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
               Home
             </Link>
-            <Link href="/prediction" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+            <Link href="/prediction" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
               Prediction
             </Link>
-            <Link href="/compare" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+            <Link href="/compare" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
               Compare Models
             </Link>
-            <Link href="/metrics" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+            <Link href="/metrics" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
               Metrics
             </Link>
-            <Link href="/documentation" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+            <Link href="/documentation" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
               Documentation
             </Link>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
-            <button
+              <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-blue-600 focus:outline-none"
+              className="text-white hover:text-blue-600 focus:outline-none"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen.toString()}
             >
@@ -55,19 +55,19 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+              <Link href="/" className="text-white hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">
                 Home
               </Link>
-              <Link href="/prediction" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+              <Link href="/prediction" className="text-white hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">
                 Prediction
               </Link>
-              <Link href="/compare" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+              <Link href="/compare" className="text-white hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">
                 Compare Models
               </Link>
-              <Link href="/metrics" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+              <Link href="/metrics" className="text-white hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">
                 Metrics
               </Link>
-              <Link href="/documentation" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+              <Link href="/documentation" className="text-white hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">
                 Documentation
               </Link>
             </div>

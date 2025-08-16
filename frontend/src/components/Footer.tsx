@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white">
+    <footer className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h3 className="text-2xl font-bold mb-4">FedMind</h3>

@@ -41,10 +41,10 @@ export default function DocumentationPage() {
             </div>
             
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Secure Aggregation</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">Simulated Secure Aggregation</h3>
               <p className="text-gray-600">
-                A cryptographic protocol that ensures individual model updates remain 
-                encrypted and private, even from the central server coordinating the training.
+                Since implementing real cryptographic protocols like homomorphic encryption or multi-party computation is super heavy, researchers often simulate secure aggregation in experiments to test FL frameworks.
+
               </p>
             </div>
             
@@ -60,12 +60,12 @@ export default function DocumentationPage() {
           <div className="bg-white rounded-lg shadow-lg p-8 text-center">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Ready to Try?</h2>
             <p className="text-gray-600 mb-6">
-              Experience the platform and see how AI can help predict mental health needs 
+              Experience the platform and see how ML models with privacy preserving techniques can help predict mental health needs 
               while keeping your data completely private.
             </p>
             <Link 
               href="/prediction"
-              className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-600 transition-colors"
             >
               Start Prediction
             </Link>

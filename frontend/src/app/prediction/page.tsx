@@ -12,14 +12,14 @@ export default function PredictionPage() {
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 to-indigo-100">
       <main className="container mx-auto px-4 py-8">
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-2">
             Mental Health Prediction Research Platform
           </h1>
           <p className="text-lg text-gray-600">
-            Federated Learning with Differential Privacy & Secure Aggregation
+            Federated Learning with Differential Privacy & Simulated Secure Aggregation
           </p>
         </header>
 
