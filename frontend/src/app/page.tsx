@@ -17,14 +17,14 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              AI-Powered Mental Health
+              FedMind
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                Prediction Platform
+                Predictive Health, Preserved Privacy.
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
-              This demo predicts whether a user may require mental health treatment using AI models 
+              This site predicts whether a user may require mental health treatment using AI models 
               trained with Federated Learning, Differential Privacy, and Secure Aggregation. 
               No data is stored, and predictions are generated in real-time.
             </p>
